@@ -1,4 +1,5 @@
 import 'package:beflyprojeto/home/components/widgets/item_championship.dart';
+import 'package:beflyprojeto/home/components/widgets/item_filter.dart';
 import 'package:beflyprojeto/home/components/widgets/item_sport.dart';
 import 'package:beflyprojeto/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with TickerProviderStateMixin {
+
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
@@ -23,16 +26,51 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           return Scaffold(
             body: SingleChildScrollView(
               child: Container(
+                decoration:  BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: <Color>[
+                      Color(0xffF5D70A).withOpacity(0.2 ),
+                      Color(0xFFFFFFFF),
+                      Color(0xFFFFFFFF),
+                    ],
+                    tileMode: TileMode.mirror,
+                  ),
+                ),
                 padding: EdgeInsets.only(left: 64, right: 64, top: 32),
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Image(
-                        height: 36,
-                        width: 143,
-                        image: AssetImage("assets/imperio.png")),
+                    Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image(
+                              height: 36,
+                              width: 143,
+                              image: AssetImage("assets/imperio.png")),
+                        ),
+                        Spacer(),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image(
+                              height: 48,
+                              width: 48,
+                              image: AssetImage("assets/img_perfil.png")),
+                        ),
+                        SizedBox(width: 18),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image(
+                              height: 48,
+                              width: 48,
+                              image: AssetImage("assets/3bar.png")),
+                        ),
+                      ],
+                    ),
                     SizedBox(
                       height: 16,
                     ),
@@ -70,36 +108,22 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         },
                       ),
                     ),
+                    SizedBox(height: 32,),
                     ToggleButtons(
                       isSelected: model.isSelected,
                       renderBorder: false,
                       fillColor: Colors.white,
-                      //borderRadius: BorderRadius.circular(20),
+                      hoverColor: Colors.white.withOpacity(0),
+                      splashColor: Colors.white.withOpacity(0),
+                      selectedColor: Colors.white,
+
                       onPressed: (int index) {
-                        setState(() {
                           model.isSelected[index] = !model.isSelected[index];
-                        });
+                          model.filterList[index].state!.setState(() {
+                            model.filterList[index].isSelected = !model.filterList[index].isSelected;
+                          });
                       },
-                      children:  <Widget>[
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 40.0),
-                          child: Column(
-                            children: const [Icon(Icons.circle), Text('Cash')],
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 40.0),
-                          child: Column(
-                            children: const [Icon(Icons.circle), Text('Upi')],
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 40.0),
-                          child: Column(
-                            children: const [Icon(Icons.circle), Text('Credit')],
-                          ),
-                        )
-                      ],
+                      children: model.filterList
                     ),
                   ],
                 ),

@@ -4,6 +4,7 @@ import 'package:beflyprojeto/components/api/championship_api.dart';
 import 'package:beflyprojeto/components/api/sports_api.dart';
 import 'package:beflyprojeto/components/models/championship.dart';
 import 'package:beflyprojeto/components/models/sport.dart';
+import 'package:beflyprojeto/home/components/widgets/item_filter.dart';
 import 'package:beflyprojeto/home/components/widgets/item_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,6 +19,8 @@ class HomeViewModel extends BaseViewModel {
     ItemTab(name:"Futebol", imagePath: "assets/bola.png",),
     ItemTab(name:"Basquete", imagePath: "assets/bola_basquete.png",),
     ItemTab(name:"E-sports", imagePath: "assets/controle.png",)];
+    List<ItemFilter> filterList = [
+    ItemFilter( title: "Live", isLive: true,isSelected: true,),ItemFilter(title: "Hoje",), ItemFilter(title: "01/11")];
   List<bool> isSelected = [false,false,false];
 
   TabController? tabControler;
