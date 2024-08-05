@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:beflyprojeto/components/api/championship_api.dart';
+import 'package:beflyprojeto/components/api/match_api.dart';
 import 'package:beflyprojeto/components/api/sports_api.dart';
 import 'package:beflyprojeto/components/models/championship.dart';
+import 'package:beflyprojeto/components/models/match.dart';
 import 'package:beflyprojeto/components/models/sport.dart';
 import 'package:beflyprojeto/home/components/widgets/item_filter.dart';
 import 'package:beflyprojeto/home/components/widgets/item_tab.dart';
@@ -14,6 +16,7 @@ class HomeViewModel extends BaseViewModel {
   BuildContext viewContext;
   List<Sport> listSports = [];
   List<Championship> listChampionships = [];
+  List<MatchModel> listMatchs = [];
   List<Widget> tabList = [
     ItemTab(name:"Todos", imagePath: "assets/apito.png",),
     ItemTab(name:"Futebol", imagePath: "assets/bola.png",),
@@ -31,6 +34,7 @@ class HomeViewModel extends BaseViewModel {
   Future<void> queryApi() async {
      listSports = await SportsAPI().get();
      listChampionships = await ChampionshipAPI().get();
+     listMatchs = await MatchAPI().get();
      notifyListeners();
   }
 

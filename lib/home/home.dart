@@ -1,9 +1,14 @@
+import 'package:beflyprojeto/home/components/widgets/item_card_match.dart';
+import 'package:beflyprojeto/home/components/widgets/item_card_tip.dart';
 import 'package:beflyprojeto/home/components/widgets/item_championship.dart';
 import 'package:beflyprojeto/home/components/widgets/item_filter.dart';
 import 'package:beflyprojeto/home/components/widgets/item_sport.dart';
+import 'package:beflyprojeto/home/components/widgets/rounded_button_icon.dart';
+import 'package:beflyprojeto/home/components/widgets/rounded_button_text.dart';
 import 'package:beflyprojeto/home/home_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
 class Home extends StatefulWidget {
@@ -14,8 +19,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with TickerProviderStateMixin {
-
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
@@ -26,19 +29,20 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           return Scaffold(
             body: SingleChildScrollView(
               child: Container(
-                decoration:  BoxDecoration(
+                decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: <Color>[
-                      Color(0xffF5D70A).withOpacity(0.2 ),
-                      Color(0xFFFFFFFF),
-                      Color(0xFFFFFFFF),
+                      const Color(0xffF5D80A).withOpacity(0.1),
+                      const Color(0xFFFFFFFF),
+                      const Color(0xFFFFFFFF),
+                      const Color(0xFFFFFFFF),
                     ],
                     tileMode: TileMode.mirror,
                   ),
                 ),
-                padding: EdgeInsets.only(left: 64, right: 64, top: 32),
+                padding: const EdgeInsets.only(left: 64, right: 64, top: 32),
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -48,30 +52,30 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
-                          child: Image(
+                          child: const Image(
                               height: 36,
                               width: 143,
                               image: AssetImage("assets/imperio.png")),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
-                          child: Image(
+                          child: const Image(
                               height: 48,
                               width: 48,
                               image: AssetImage("assets/img_perfil.png")),
                         ),
-                        SizedBox(width: 18),
+                        const SizedBox(width: 18),
                         ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
-                          child: Image(
+                          child: const Image(
                               height: 48,
                               width: 48,
                               image: AssetImage("assets/3bar.png")),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     SizedBox(
@@ -104,27 +108,79 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         itemCount: model.listChampionships.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
-                          return ItemChampionship();
+                          return const ItemChampionship();
                         },
                       ),
                     ),
-                    SizedBox(height: 32,),
-                    ToggleButtons(
-                      isSelected: model.isSelected,
-                      renderBorder: false,
-                      fillColor: Colors.white,
-                      hoverColor: Colors.white.withOpacity(0),
-                      splashColor: Colors.white.withOpacity(0),
-                      selectedColor: Colors.white,
-
-                      onPressed: (int index) {
-                          model.isSelected[index] = !model.isSelected[index];
-                          model.filterList[index].state!.setState(() {
-                            model.filterList[index].isSelected = !model.filterList[index].isSelected;
-                          });
-                      },
-                      children: model.filterList
+                    const SizedBox(
+                      height: 32,
                     ),
+                    Row(
+                      children: [
+                        ToggleButtons(
+                            isSelected: model.isSelected,
+                            renderBorder: false,
+                            fillColor: Colors.white,
+                            hoverColor: Colors.white.withOpacity(0),
+                            splashColor: Colors.white.withOpacity(0),
+                            selectedColor: Colors.white,
+                            onPressed: (int index) {
+                              model.isSelected[index] =
+                                  !model.isSelected[index];
+                              model.filterList[index].state!.setState(() {
+                                model.filterList[index].isSelected =
+                                    !model.filterList[index].isSelected;
+                              });
+                            },
+                            children: model.filterList),
+                        const Spacer(),
+                        const Text("Acompanhe todas as partidas"),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Container(
+                            width: 67,
+                            height: 48,
+                            child: RoundedButtonIcon(
+                              icon: Icons.arrow_forward,
+                              onPressed: () {},
+                            )),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 395,
+                      width: MediaQuery.of(context).size.width,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        itemCount: model.listMatchs.length,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          return const ItemCardMatch();
+                        },
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Text(
+                            "Dicas",
+                            style: TextStyle(
+                                fontFamily: GoogleFonts.montserrat().fontFamily,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 18),
+                          ),
+                          Spacer(),
+                          Text("Ver todas",
+                              style: TextStyle(
+                                  fontFamily:
+                                      GoogleFonts.montserrat().fontFamily,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14))
+                        ],
+                      ),
+                    ),
+                    ItemCardTip()
                   ],
                 ),
               ),

@@ -12,7 +12,7 @@ class ItemChampionship extends StatelessWidget {
       child: Stack(children: [
         Container(
           decoration: BoxDecoration(
-            color: Colors.grey,
+            color: Color(0xffC4B23A).withOpacity(0.2),
             borderRadius: BorderRadius.circular(24),
           ),
           height: 80,
