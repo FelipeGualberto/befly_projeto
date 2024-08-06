@@ -1,4 +1,5 @@
-import 'package:beflyprojeto/home/home.dart';
+import 'package:beflyprojeto/pages/home/home.dart';
+import 'package:beflyprojeto/pages/login/login.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Home()
+      home: Login()
     );
   }
 }
