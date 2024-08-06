@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:beflyprojeto/components/api/bets_api.dart';
+import 'package:beflyprojeto/components/api/bonus_api.dart';
 import 'package:beflyprojeto/components/api/championship_api.dart';
 import 'package:beflyprojeto/components/api/match_api.dart';
 import 'package:beflyprojeto/components/api/sports_api.dart';
 import 'package:beflyprojeto/components/api/tips_api.dart';
+import 'package:beflyprojeto/components/models/bonus.dart';
 import 'package:beflyprojeto/components/models/championship.dart';
 import 'package:beflyprojeto/components/models/match.dart';
 import 'package:beflyprojeto/components/models/sport.dart';
@@ -22,6 +24,7 @@ class HomeViewModel extends BaseViewModel {
   List<Championship> listChampionships = [];
   List<MatchModel> listMatchs = [];
   List<Tip> listTips = [];
+  List<Bonus> listBonus = [];
   List<WonBet> listWonBets = [];
   List<Widget> tabList = [
     ItemTab(name:"Todos", imagePath: "assets/apito.png",),
@@ -33,6 +36,8 @@ class HomeViewModel extends BaseViewModel {
   List<bool> isSelected = [false,false,false];
 
   TabController? tabControler;
+
+
   HomeViewModel(this.viewContext){
     queryApi();
   }
@@ -42,6 +47,7 @@ class HomeViewModel extends BaseViewModel {
      listChampionships = await ChampionshipAPI().get();
      listMatchs = await MatchAPI().get();
      listTips = await TipsAPI().get();
+     listBonus = await BonusAPI().get();
      listWonBets = await BetsAPI().get();
      notifyListeners();
   }

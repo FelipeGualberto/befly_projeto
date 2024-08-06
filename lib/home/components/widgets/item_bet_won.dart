@@ -1,9 +1,11 @@
+import 'package:beflyprojeto/components/models/won_bet.dart';
 import 'package:beflyprojeto/home/components/widgets/item_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ItemBetWon extends StatelessWidget {
-  const ItemBetWon({super.key});
+  WonBet wonbet;
+   ItemBetWon({super.key, required this.wonbet});
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,9 @@ class ItemBetWon extends StatelessWidget {
 
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
-                  child: const Image(
+                  child:  Image(
                       height: 36,
-                      image: AssetImage("assets/img_perfil.png")),
+                      image: NetworkImage("${wonbet.userAvatar}")),
                 ),
                 SizedBox(height: 16,),
                 Container(
@@ -35,8 +37,8 @@ class ItemBetWon extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("data"),
-                      Text("data"),
+                      Text("${wonbet.user}"),
+                      Text("${wonbet.score}"),
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,

@@ -108,7 +108,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         itemCount: model.listChampionships.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
-                          return const ItemChampionship();
+                          return  ItemChampionship(championship: model.listChampionships[index] );
                         },
                       ),
                     ),
@@ -156,7 +156,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         itemCount: model.listMatchs.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
-                          return const ItemCardMatch();
+                          return  ItemCardMatch(match: model.listMatchs[index]);
                         },
                       ),
                     ),
@@ -186,10 +186,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         physics: const AlwaysScrollableScrollPhysics(),
-                        itemCount: model.listMatchs.length,
+                        itemCount: model.listTips.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
-                          return const ItemCardTip();
+                          return ItemCardTip(tip: model.listTips[index]);
                         },
                       ),
                     ),
@@ -203,12 +203,12 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                    // ItemBonus()
                     SizedBox(
                       height: 168,
-                      child: GridView.builder(itemCount: 4,  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      child: GridView.builder(itemCount: model.listBonus.length,  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisExtent: 84,
 
                       ), itemBuilder: (context, index){
-                        return ItemBonus();
+                        return ItemBonus(bonus: model.listBonus[index]);
                       }),
                     ),
                     Row(
@@ -243,7 +243,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         itemCount: model.listWonBets.length,
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
-                          return const ItemBetWon();
+                          return  ItemBetWon(wonbet: model.listWonBets[index]);
                         },
                       ),
                     ),

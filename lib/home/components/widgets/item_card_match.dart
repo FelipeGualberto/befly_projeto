@@ -1,8 +1,10 @@
+import 'package:beflyprojeto/components/models/match.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ItemCardMatch extends StatelessWidget {
-  const ItemCardMatch({super.key});
+  MatchModel match;
+  ItemCardMatch({super.key, required this.match});
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +23,22 @@ class ItemCardMatch extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 40),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+
                   children: [
                     Container(
-                      child: const Column(
+                      width: 50,
+                      child:  Column(
                         children: [
-                          Image(
-                              height: 48,
-                              width: 48,
-                              image: AssetImage("assets/3bar.png")),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16.0),
+                            child: Image(
+                                fit: BoxFit.cover,
+                                height: 48,
+                                width: 48,
+                                image: NetworkImage("${match.teamAImage}")),
+                          ),
                           SizedBox(height: 21,),
-                          Text("data")
+                          Text("${match.teamA}", overflow: TextOverflow.clip, maxLines: 1,)
                         ],
                       ),
                     ),
@@ -61,14 +69,19 @@ class ItemCardMatch extends StatelessWidget {
                     ),
                     SizedBox(width: 40,),
                     Container(
-                      child: const Column(
+                      width: 50,
+                      child:  Column(
                         children: [
-                          Image(
-                              height: 48,
-                              width: 48,
-                              image: AssetImage("assets/3bar.png")),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16.0),
+                            child: Image(
+                                fit: BoxFit.cover,
+                                height: 48,
+                                width: 48,
+                                image: NetworkImage("${match.teamBImage}")),
+                          ),
                           SizedBox(height: 21,),
-                          Text("data")
+                          Text("${match.teamB}", overflow: TextOverflow.clip, maxLines: 1,)
                         ],
                       ),
                     ),
@@ -76,7 +89,7 @@ class ItemCardMatch extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(child: Text("2:2", style: TextStyle(fontSize: 50, fontFamily:GoogleFonts.montserrat().fontFamily,  ),),),
+              Container(child: Text("${match.teamAScore.toString()[0]}:${match.teamBScore.toString()[0]}", style: TextStyle(fontSize: 50, fontFamily:GoogleFonts.montserrat().fontFamily,  ),),),
               Container(
                 child: Image(
                     image: AssetImage("assets/matches/img_tempo_faltas.png")),
@@ -85,13 +98,13 @@ class ItemCardMatch extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    child: const Column(
+                    child:  Column(
                       children: [
                         Image(
                             height: 48,
                             width: 48,
-                            image: AssetImage("assets/3bar.png")),
-                        Text("data")
+                            image: AssetImage("assets/matches/1xbet.png")),
+                        Text("${match.xbetOddsAvg}")
                       ],
                     ),
                   ),
@@ -102,13 +115,13 @@ class ItemCardMatch extends StatelessWidget {
                     child: Column(
                       children: [
                         Container(
-                          child: const Column(
+                          child:  Column(
                             children: [
                               Image(
                                   height: 48,
                                   width: 48,
-                                  image: AssetImage("assets/3bar.png")),
-                              Text("data")
+                                  image: AssetImage("assets/matches/betsafe.png")),
+                              Text("${match.betsafeOddsAvg}")
                             ],
                           ),
                         ),
@@ -118,13 +131,13 @@ class ItemCardMatch extends StatelessWidget {
                   ),
                   SizedBox(width: 40,),
                   Container(
-                    child: const Column(
+                    child:  Column(
                       children: [
                         Image(
                             height: 48,
                             width: 48,
-                            image: AssetImage("assets/3bar.png")),
-                        Text("data")
+                            image: AssetImage("assets/matches/betsson.png")),
+                        Text("${match.betssonOddsAvg}")
                       ],
                     ),
                   ),

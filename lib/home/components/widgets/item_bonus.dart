@@ -1,8 +1,11 @@
+
+import 'package:beflyprojeto/components/models/bonus.dart';
 import 'package:beflyprojeto/ui/colors.dart';
 import 'package:flutter/material.dart';
 
 class ItemBonus extends StatelessWidget {
-  const ItemBonus({super.key});
+  Bonus bonus;
+  ItemBonus({super.key, required this.bonus});
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +22,14 @@ class ItemBonus extends StatelessWidget {
         Row(
           children: [
             Image(
-                height: 12,
-                width: 12,
+                height: 40,
+                width: 40,
                 image: AssetImage("assets/bets/stake.png")),
             SizedBox(
               width: 8,
             ),
             Text(
-              "name",
+              "${bonus.platform} ${bonus.discount}" ,
               style: TextStyle(fontSize: 12),
             )
           ],

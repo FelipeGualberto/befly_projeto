@@ -1,10 +1,13 @@
 import 'dart:math';
 
+import 'package:beflyprojeto/components/models/championship.dart';
 import 'package:beflyprojeto/ui/colors.dart';
 import 'package:flutter/material.dart';
 
 class ItemChampionship extends StatelessWidget {
-  const ItemChampionship({super.key});
+  Championship championship;
+
+  ItemChampionship({super.key, required this.championship});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +24,13 @@ class ItemChampionship extends StatelessWidget {
         ),
          Positioned.fill(
             child: Center(
-          child: Image(
-              height: 36, width: 143, image: AssetImage("assets/championships/${Random().nextInt(4) + 1}.png")),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16.0),
+            child: Image(
+                fit: BoxFit.cover,
+               // height: 36, width: 143, image: AssetImage("assets/championships/${Random().nextInt(4) + 1}.png")),
+                height: 40, width: 40, image: NetworkImage("${championship.image}")),
+          ),
         ))
       ]),
     );

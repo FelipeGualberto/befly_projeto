@@ -1,9 +1,12 @@
+import 'package:beflyprojeto/components/models/tip.dart';
 import 'package:beflyprojeto/home/components/widgets/item_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ItemCardTip extends StatelessWidget {
-  const ItemCardTip({super.key});
+  Tip tip;
+
+  ItemCardTip({super.key, required this.tip});
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +28,14 @@ class ItemCardTip extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(36),
                       topRight: Radius.circular(36)),
-                  child: Image(image: AssetImage("assets/teste.png")),
+                  child: Image(image: NetworkImage("${tip.image}")),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 54),
-                child: Text("Apostas ao Vivo: Estratégias e Dicas para o Sucesso",
+                child: Text("${tip.title}",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         //fontFamily: GoogleFonts.montserrat().fontFamily,
                         fontWeight: FontWeight.w900,
@@ -39,7 +44,9 @@ class ItemCardTip extends StatelessWidget {
               SizedBox(height: 8,),
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 54),
-                child: Text("Explore as melhores práticas ...",
+                child: Text("${tip.description}",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         fontFamily: GoogleFonts.montserrat().fontFamily,
                         fontWeight: FontWeight.w700,
