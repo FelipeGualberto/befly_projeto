@@ -29,6 +29,7 @@ class ItemCardMatch extends StatelessWidget {
                               height: 48,
                               width: 48,
                               image: AssetImage("assets/3bar.png")),
+                          SizedBox(height: 21,),
                           Text("data")
                         ],
                       ),
@@ -66,6 +67,7 @@ class ItemCardMatch extends StatelessWidget {
                               height: 48,
                               width: 48,
                               image: AssetImage("assets/3bar.png")),
+                          SizedBox(height: 21,),
                           Text("data")
                         ],
                       ),

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:beflyprojeto/ui/colors.dart';
 import 'package:flutter/material.dart';
 
 class ItemChampionship extends StatelessWidget {
@@ -12,7 +13,7 @@ class ItemChampionship extends StatelessWidget {
       child: Stack(children: [
         Container(
           decoration: BoxDecoration(
-            color: Color(0xffC4B23A).withOpacity(0.2),
+            color: kPrimaryDarkColor.withOpacity(0.2),
             borderRadius: BorderRadius.circular(24),
           ),
           height: 80,

@@ -1,11 +1,15 @@
 import 'dart:convert';
 
+import 'package:beflyprojeto/components/api/bets_api.dart';
 import 'package:beflyprojeto/components/api/championship_api.dart';
 import 'package:beflyprojeto/components/api/match_api.dart';
 import 'package:beflyprojeto/components/api/sports_api.dart';
+import 'package:beflyprojeto/components/api/tips_api.dart';
 import 'package:beflyprojeto/components/models/championship.dart';
 import 'package:beflyprojeto/components/models/match.dart';
 import 'package:beflyprojeto/components/models/sport.dart';
+import 'package:beflyprojeto/components/models/tip.dart';
+import 'package:beflyprojeto/components/models/won_bet.dart';
 import 'package:beflyprojeto/home/components/widgets/item_filter.dart';
 import 'package:beflyprojeto/home/components/widgets/item_tab.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +21,8 @@ class HomeViewModel extends BaseViewModel {
   List<Sport> listSports = [];
   List<Championship> listChampionships = [];
   List<MatchModel> listMatchs = [];
+  List<Tip> listTips = [];
+  List<WonBet> listWonBets = [];
   List<Widget> tabList = [
     ItemTab(name:"Todos", imagePath: "assets/apito.png",),
     ItemTab(name:"Futebol", imagePath: "assets/bola.png",),
@@ -35,6 +41,8 @@ class HomeViewModel extends BaseViewModel {
      listSports = await SportsAPI().get();
      listChampionships = await ChampionshipAPI().get();
      listMatchs = await MatchAPI().get();
+     listTips = await TipsAPI().get();
+     listWonBets = await BetsAPI().get();
      notifyListeners();
   }
 

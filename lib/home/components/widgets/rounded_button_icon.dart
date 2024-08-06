@@ -17,7 +17,7 @@ class RoundedButtonIcon extends StatelessWidget {
       child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: kPrimaryColor,
+            backgroundColor: kPrimaryLightColor,
             //padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80)),
           ),

@@ -1,3 +1,5 @@
+import 'package:beflyprojeto/home/components/widgets/item_bet_won.dart';
+import 'package:beflyprojeto/home/components/widgets/item_bonus.dart';
 import 'package:beflyprojeto/home/components/widgets/item_card_match.dart';
 import 'package:beflyprojeto/home/components/widgets/item_card_tip.dart';
 import 'package:beflyprojeto/home/components/widgets/item_championship.dart';
@@ -29,6 +31,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           return Scaffold(
             body: SingleChildScrollView(
               child: Container(
+                margin: EdgeInsets.only(bottom: 32),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
@@ -50,13 +53,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   children: <Widget>[
                     Row(
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: const Image(
-                              height: 36,
-                              width: 143,
-                              image: AssetImage("assets/imperio.png")),
-                        ),
+                        const Image(
+                            height: 36,
+                            width: 143,
+                            image: AssetImage("assets/imperio.png")),
                         const Spacer(),
                         ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
@@ -180,7 +180,76 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         ],
                       ),
                     ),
-                    ItemCardTip()
+                    SizedBox(
+                      height: 300,
+                      width: MediaQuery.of(context).size.width,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        itemCount: model.listMatchs.length,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          return const ItemCardTip();
+                        },
+                      ),
+                    ),
+                    Text(
+                      "Principais bônus de aposta",
+                      style: TextStyle(
+                          fontFamily: GoogleFonts.montserrat().fontFamily,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18),
+                    ),
+                   // ItemBonus()
+                    SizedBox(
+                      height: 168,
+                      child: GridView.builder(itemCount: 4,  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisExtent: 84,
+
+                      ), itemBuilder: (context, index){
+                        return ItemBonus();
+                      }),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Veja mais bônus disponíveis"),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Container(
+                            width: 67,
+                            height: 48,
+                            child: RoundedButtonIcon(
+                              icon: Icons.arrow_forward,
+                              onPressed: () {},
+                            )),
+                      ],
+                    ),
+                    Text(
+                      "Ultimas apostas ganhas            ",
+                      style: TextStyle(
+                          fontFamily: GoogleFonts.montserrat().fontFamily,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18),
+                    ),
+                    SizedBox(
+                      height: 92,
+                      width: MediaQuery.of(context).size.width,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        itemCount: model.listWonBets.length,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          return const ItemBetWon();
+                        },
+                      ),
+                    ),
+                    Container(margin: EdgeInsets.only(top: 32 ), height: 61, child: Expanded(child: Center(child: const Image(
+                        image: AssetImage("assets/imperio-big.png"))),),),
+
                   ],
                 ),
               ),

@@ -45,5 +45,6 @@ flutter:
     - assets/championships/
     - assets/sports/
     - assets/matches/
+    - assets/bets/
 
 
