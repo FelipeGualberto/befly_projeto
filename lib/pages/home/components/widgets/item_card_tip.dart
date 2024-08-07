@@ -16,7 +16,7 @@ class ItemCardTip extends StatelessWidget {
         width: 225,
         child: Card(
           color: const Color(0xFFFDFDFD),
-          elevation: 10,
+          elevation: 2,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(36)),
           child: Column(

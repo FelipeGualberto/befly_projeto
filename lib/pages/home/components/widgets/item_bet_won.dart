@@ -1,4 +1,5 @@
 import 'package:beflyprojeto/components/models/won_bet.dart';
+import 'package:beflyprojeto/ui/styles.dart';
 import 'package:flutter/material.dart';
 
 
@@ -43,7 +44,7 @@ class ItemBetWon extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("data"),
+                          Text("BRA X ARG", style: ktextStyleMontserrat10,),
                           Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Icon(
@@ -51,7 +52,7 @@ class ItemBetWon extends StatelessWidget {
                               size: 4,
                             ),
                           ),
-                          Text("data"),
+                          Text("Há 10 minutos", style: ktextStyleMontserrat10),
                         ],
                       ),
                     ],
@@ -65,9 +66,9 @@ class ItemBetWon extends StatelessWidget {
                     const Image(
                         height: 36,
                         width: 36,
-                        image: AssetImage("assets/img_perfil.png")),
+                        image: AssetImage("assets/bets/bet365.png")),
                     SizedBox(height: 4,),
-                    Text("teste")
+                    Text("${wonbet.id}")
                   ],
                 ),
               ],

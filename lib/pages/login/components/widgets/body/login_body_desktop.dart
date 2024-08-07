@@ -11,12 +11,14 @@ class LoginBodyDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 64, right: 64, top: 32),
+
+      padding: const EdgeInsets.only(left: 64, top: 32),
       child: Column(
         children: [
           Container(
+            width: MediaQuery.of(context).size.width,
             child: Topo(),
-            padding: EdgeInsets.only(left: 48),
+            padding: EdgeInsets.only(right: 64),
           ),
           SizedBox(
             height: 32,
@@ -32,7 +34,7 @@ class LoginBodyDesktop extends StatelessWidget {
                   height: 568,
                   width: 739,
                   image: AssetImage("assets/login/img_login_big.png")),
-              Spacer(),
+              SizedBox(width: 30,),
               Column(
                 children: [
                   const SizedBox(height: 68),
@@ -46,7 +48,7 @@ class LoginBodyDesktop extends StatelessWidget {
                       'Jogue e ganhe! Temos prêmios\n diários, semanais e mensais!',
                       style: ktextStyleFieldWork12),
                   SizedBox(height: 16),
-                  const SizedBox(height: 20),
+
                   Container(
                       height: 500,
                       child: LoginModal(
