@@ -35,7 +35,7 @@ class HomeViewModel extends BaseViewModel {
     List<ItemFilter> filterList = [
     ItemFilter( title: "Live", isLive: true,isSelected: true,),ItemFilter(title: "Hoje",), ItemFilter(title: "01/11")];
   List<bool> isSelected = [false,false,false];
-
+  bool isLoading = true;
   TabController? tabControler;
 
 
@@ -50,6 +50,7 @@ class HomeViewModel extends BaseViewModel {
      listTips = await TipsAPI().get();
      listBonus = await BonusAPI().get();
      listWonBets = await BetsAPI().get();
+     isLoading = false;
      notifyListeners();
   }
 

@@ -19,11 +19,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: AppBarTheme(backgroundColor: Color(0xFFFFFFFF)  ),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        tabBarTheme: TabBarTheme(labelColor: Colors.black, indicatorColor: Colors.black, dividerColor: Colors.white.withOpacity(0)),
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
         useMaterial3: true,
       ),
-      home: Login()
+      home: Home()
     );
   }
 }
