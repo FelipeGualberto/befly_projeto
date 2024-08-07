@@ -1,29 +1,19 @@
 import 'package:beflyprojeto/components/widgets/rounded_button.dart';
 import 'package:beflyprojeto/components/widgets/topo.dart';
+import 'package:beflyprojeto/pages/login/login_viewmodel.dart';
 import 'package:beflyprojeto/ui/colors.dart';
 import 'package:beflyprojeto/ui/styles.dart';
 import 'package:flutter/material.dart';
 
 class LoginModal extends StatelessWidget {
-  const LoginModal({super.key});
+  LoginViewModel model;
+   LoginModal({required this.model, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
-          const SizedBox(height: 68),
-          Text(
-              textAlign: TextAlign.center,
-              'Entre\n em sua conta',
-              style: ktextStyleArchivoNarrow24),
-          SizedBox(height: 8),
-          Text(
-              textAlign: TextAlign.center,
-              'Jogue e ganhe! Temos prêmios\n diários, semanais e mensais!',
-              style: ktextStyleFieldWork12),
-          SizedBox(height: 16),
-          const SizedBox(height: 20),
           Center(
               child: RoundedButton(
                   width: 298,
@@ -34,7 +24,7 @@ class LoginModal extends StatelessWidget {
                   color: Color(0xFFE6E6E6),
                   textColor: Colors.black,
                   textStyle: ktextStyleOutfit12,
-                  onPressed: () {})),
+                  onPressed: model.signGoogle)),
           const SizedBox(height: 16),
           Center(
               child: RoundedButton(
@@ -46,7 +36,7 @@ class LoginModal extends StatelessWidget {
                   color: Color(0xFF070101),
                   textColor: Colors.white,
                   textStyle: ktextStyleOutfit12,
-                  onPressed: () {})),
+                  onPressed: model.signApple)),
           SizedBox(
             height: 41,
           ),
@@ -59,6 +49,8 @@ class LoginModal extends StatelessWidget {
             height: 41,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               RoundedButton(
                 text: "Email",
@@ -67,8 +59,8 @@ class LoginModal extends StatelessWidget {
                 textColor: Color(0xFF17753A),
                 color: Colors.white,
                 height: 56,
-                width: 147,
-                onPressed: () {},
+                width: 120,
+                onPressed: model.signEmail,
               ),
               SizedBox(
                 width: 11,
@@ -78,8 +70,8 @@ class LoginModal extends StatelessWidget {
                 textStyle: ktextStyleOutfit12,
                 textColor: Colors.black,
                 height: 56,
-                width: 147,
-                onPressed: () {},
+                width: 120,
+                onPressed: model.signTelefone,
               ),
             ],
           )

@@ -36,6 +36,7 @@ class RoundedButton extends StatelessWidget {
       textStyleCreated = textStyle!.apply(color: textColor);
     }
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
             onPressed: onPressed,

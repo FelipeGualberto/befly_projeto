@@ -11,6 +11,10 @@ TextStyle? ktextStyleMontserrat14 = TextStyle(
     fontFamily: GoogleFonts.montserrat().fontFamily,
     fontWeight: FontWeight.w700,
     fontSize: 14);
+TextStyle? ktextStyleMontserrat24 = TextStyle(
+    fontFamily: GoogleFonts.montserrat().fontFamily,
+    fontWeight: FontWeight.w700,
+    fontSize: 24);
 TextStyle? ktextStyleArchivoNarrow24 = TextStyle(
     fontFamily: GoogleFonts.archivoNarrow().fontFamily,
     fontWeight: FontWeight.w600,

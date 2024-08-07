@@ -1,3 +1,4 @@
+import 'package:beflyprojeto/ui/responsive.dart';
 import 'package:flutter/material.dart';
 
 class Topo extends StatelessWidget {
@@ -7,10 +8,10 @@ class Topo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Image(
-            height: 36, width: 143, image: AssetImage("assets/imperio.png")),
-        const Spacer(),
-        ClipRRect(
+       Image(
+            height: 36, width: 143, image: AssetImage("assets/imperio.png")) ,
+         Spacer(),
+        if(!Responsive.isMobile(context)) ClipRRect(
           borderRadius: BorderRadius.circular(8.0),
           child: const Image(
               height: 48,
@@ -18,7 +19,7 @@ class Topo extends StatelessWidget {
               image: AssetImage("assets/img_perfil.png")),
         ),
         const SizedBox(width: 18),
-        ClipRRect(
+       if(!Responsive.isMobile(context) ) ClipRRect(
           borderRadius: BorderRadius.circular(8.0),
           child: const Image(
               height: 48, width: 48, image: AssetImage("assets/3bar.png")),

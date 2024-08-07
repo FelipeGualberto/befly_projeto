@@ -7,6 +7,7 @@ import 'package:beflyprojeto/pages/home/components/widgets/item_championship.dar
 import 'package:beflyprojeto/pages/home/components/widgets/item_sport.dart';
 import 'package:beflyprojeto/components/widgets/rounded_button_icon.dart';
 import 'package:beflyprojeto/pages/home/home_viewmodel.dart';
+import 'package:beflyprojeto/ui/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -58,6 +59,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         height: 50,
                         width: 500,
                         child: TabBar(
+                          isScrollable: Responsive.isMobile(context)? true: false,
                             controller: model.tabControler,
                             tabs: model.tabList)),
                     SizedBox(
@@ -109,12 +111,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                               });
                             },
                             children: model.filterList),
-                        const Spacer(),
-                        const Text("Acompanhe todas as partidas"),
-                        const SizedBox(
+
+                          const Spacer(),
+                        if(Responsive.isDesktop(context))  Text("Acompanhe todas as partidas"),
+                        if(Responsive.isDesktop(context))  const SizedBox(
                           width: 8,
                         ),
-                        Container(
+                        if(Responsive.isDesktop(context))  Container(
                             width: 67,
                             height: 48,
                             child: RoundedButtonIcon(
@@ -127,7 +130,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       height: 395,
                       width: MediaQuery.of(context).size.width,
                       child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
+                        scrollDirection: Responsive.isMobile(context)? Axis.vertical: Axis.horizontal,
                         physics: const AlwaysScrollableScrollPhysics(),
                         itemCount: model.listMatchs.length,
                         shrinkWrap: true,
@@ -179,8 +182,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                    // ItemBonus()
                     SizedBox(
                       height: 168,
-                      child: GridView.builder(itemCount: model.listBonus.length,  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
+                      child: GridView.builder(itemCount: model.listBonus.length,  gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: Responsive.isMobile(context)? 1 : 2,
                         mainAxisExtent: 84,
 
                       ), itemBuilder: (context, index){
